@@ -1,0 +1,23 @@
+import requests
+import json
+
+# Set up the transaction data
+data = {
+    "amount": "4.00",
+    "sender_address": "bc1qcm75nfxwnqyndjt92jvnusl7d2fuvv0udymthv",
+    "bc1qjrrfr9d42t8lap72fllgv8uu2zcquu552zwrqv": "<target_wallet_address>",
+    "fee": "0.1",
+    "confirmation": "true"
+}
+
+# Set up the headers
+headers = {
+    "Content-Type": "application/json",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
+}
+
+# Send the request to the Flash BTC API
+response = requests.post("https://flashbtc.net/api/create-transaction", headers=headers, data=json.dumps(data))
+
+# Print the response
+print(response.json())
